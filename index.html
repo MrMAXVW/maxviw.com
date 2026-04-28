@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Chiu | Technical Consultant & Designer</title>
+    <!-- Tailwind for rapid, clean styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP for high-end animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Added Montserrat for the Logo */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap');
+
+        :root {
+            --bg-color: #050505;
+            --accent-color: #3b82f6; /* Trusting Blue */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        h1, h2, h3, .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Montserrat Logo Styling */
+        .logo-font {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Custom Cursor Style - Optimized for speed */
+        #cursor {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            will-change: transform;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-follower {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            will-change: transform;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, width 0.3s, height 0.3s;
+        }
+
+        /* Smooth reveal animations */
+        .reveal {
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        /* Designer glass effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+        }
+
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            background: var(--accent-color);
+            transition: width .3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .parallax-bg {
+            will-change: transform;
+        }
+
+        /* Timeline styles */
+        .timeline-line {
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--accent-color), transparent);
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-500 selection:text-white">
+
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
+    <div class="cursor-follower" id="follower"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-8 flex justify-between items-center mix-blend-difference">
+        <a href="#" class="logo-font text-xl font-bold tracking-tighter hover-grow ml-4 md:ml-12 transition-all duration-300">MAX CHIU.</a>
+        <div class="hidden md:flex space-x-10 text-xs font-medium tracking-[0.2em] uppercase">
+            <a href="#about" class="nav-link smooth-scroll">About</a>
+            <a href="#expertise" class="nav-link smooth-scroll">Expertise</a>
+            <a href="#experience" class="nav-link smooth-scroll">Experience</a>
+            <a href="#contact" class="nav-link smooth-scroll">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col justify-center px-6 md:px-24 hero-gradient overflow-hidden">
+        <div class="max-w-5xl z-10 pt-32 md:pt-40">
+            <h1 class="text-6xl md:text-9xl font-bold leading-[0.9] mb-8 reveal hero-title">
+                Solving <span class="italic font-light">Chaos</span> <br>
+                Through Design.
+            </h1>
+            <p class="text-lg md:text-2xl text-slate-400 max-w-2xl reveal leading-relaxed">
+                Max Chiu — A Technical Consultant who understands design, and a Designer who actually knows how things work.
+            </p>
+            
+            <div class="mt-12 reveal">
+                <a href="#contact" class="smooth-scroll inline-flex items-center space-x-6 group bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_35px_rgba(59,130,246,0.6)] hover:scale-[1.02]">
+                    <span class="text-sm uppercase tracking-[0.2em] font-bold">Open for Collaboration</span>
+                    <span class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-12 transition-transform duration-500">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Parallax Background Element - Size increased to 27vw (1.5x of 18vw) -->
+        <div class="absolute bottom-10 right-10 opacity-[0.03] select-none pointer-events-none hidden lg:block parallax-bg" data-speed="0.1">
+            <span class="text-[27vw] font-bold leading-[0.8] tracking-tighter text-right block uppercase">MAX<br>CHIU</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 px-6 md:px-24">
+        <div class="grid lg:grid-cols-2 gap-20">
+            <div class="reveal">
+                <span class="text-blue-500 uppercase tracking-widest text-xs font-bold">01. About Me</span>
+                <h3 class="text-4xl md:text-5xl font-bold mt-6 mb-8">Professional vibe, <br>sharp execution.</h3>
+            </div>
+            <div class="reveal">
+                <p class="text-slate-400 text-lg leading-relaxed mb-6">
+                    I am a hybrid professional bridging the gap between high-level technical architecture and user-centric design. With a strong background in Intelligent Document Processing (IDP) and FSI system integration, I help organizations automate the mundane and focus on the meaningful.
+                </p>
+                <p class="text-slate-400 text-lg leading-relaxed italic">
+                    "If a solution is technically sound but unusable, it isn't a solution."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="py-32 px-6 md:px-24 bg-zinc-950">
+        <span class="text-blue-500 uppercase tracking-widest text-xs font-bold reveal">02. Expertise</span>
+        <div class="grid md:grid-cols-3 gap-8 mt-12">
+            <div class="glass p-10 rounded-2xl reveal expertise-card">
+                <div class="mb-6 text-blue-500"><i data-lucide="cpu" class="w-10 h-10"></i></div>
+                <h4 class="text-2xl font-bold mb-4">Technical Consulting</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Specializing in IDP solutions, solution architecture, and AI-driven document intelligence platforms for enterprise scale.
+                </p>
+            </div>
+            <div class="glass p-10 rounded-2xl reveal expertise-card">
+                <div class="mb-6 text-blue-500"><i data-lucide="palette" class="w-10 h-10"></i></div>
+                <h4 class="text-2xl font-bold mb-4">Design</h4>
+                <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                    Extensive experience in Photography, Branding, Graphic Design, Website Development, Video Editing, and Directing.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-zinc-900 text-[10px] text-zinc-500 rounded border border-zinc-800">UI/UX</span>
+                    <span class="px-2 py-1 bg-zinc-900 text-[10px] text-zinc-500 rounded border border-zinc-800">Video</span>
+                    <span class="px-2 py-1 bg-zinc-900 text-[10px] text-zinc-500 rounded border border-zinc-800">Photo</span>
+                </div>
+            </div>
+            <div class="glass p-10 rounded-2xl reveal expertise-card">
+                <div class="mb-6 text-blue-500"><i data-lucide="layout" class="w-10 h-10"></i></div>
+                <h4 class="text-2xl font-bold mb-4">Solution Design</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Bridging business objectives with technical feasibility to ensure cost reduction and high operational efficiency.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-32 px-6 md:px-24">
+        <span class="text-blue-500 uppercase tracking-widest text-xs font-bold reveal">03. Professional Experience</span>
+        <div class="mt-20 space-y-24">
+            
+            <!-- ACW Distribution -->
+            <div class="grid md:grid-cols-12 gap-8 reveal">
+                <div class="md:col-span-5">
+                    <h4 class="text-2xl font-bold">Technical Presales Consultant</h4>
+                    <p class="text-blue-500 font-medium">ACW Distribution (HK) Limited</p>
+                    <p class="text-zinc-500 text-sm mt-1">Aug 2023 - Present (2 Years 9 Months)</p>
+                </div>
+                <div class="md:col-span-7">
+                    <ul class="text-zinc-400 text-sm space-y-4 leading-relaxed">
+                        <li><strong class="text-zinc-200">Solution Architecture:</strong> Architected end-to-end Intelligent Document Processing (IDP) solutions for FSI enterprise clients.</li>
+                        <li><strong class="text-zinc-200">Digital Transformation:</strong> Led strategic transition from legacy imaging systems to AI-driven document intelligence (Azure AI, AWS Textract).</li>
+                        <li><strong class="text-zinc-200">Proof of Concept:</strong> Spearheaded PoCs to validate workflows and provided post-sales technical guidance.</li>
+                        <li><strong class="text-zinc-200">Stakeholder Management:</strong> Collaborated with C-level executives to align automation strategies with business objectives.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SMBC -->
+            <div class="grid md:grid-cols-12 gap-8 reveal">
+                <div class="md:col-span-5">
+                    <h4 class="text-2xl font-bold">Information Technology Officer</h4>
+                    <p class="text-blue-500 font-medium">Sumitomo Mitsui Banking Corp (SMBC)</p>
+                    <p class="text-zinc-500 text-sm mt-1">Jul 2022 - Jul 2023 (1 Year 1 Month)</p>
+                </div>
+                <div class="md:col-span-7">
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Managed day-to-day IT operations and ensured system stability within a strictly regulated banking environment. Maintained IT infrastructure and ensured all technical workflows met internal security and compliance standards.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Chopard -->
+            <div class="grid md:grid-cols-12 gap-8 reveal">
+                <div class="md:col-span-5">
+                    <h4 class="text-2xl font-bold">IT Operations Administrator</h4>
+                    <p class="text-blue-500 font-medium">Chopard</p>
+                    <p class="text-zinc-500 text-sm mt-1">Sep 2021 - Jul 2022 (11 Months)</p>
+                </div>
+                <div class="md:col-span-7">
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Administered IT systems and provided technical support for regional offices and retail boutiques. Managed hardware/software inventory and ensured high availability of Point-of-Sale (POS) and back-office systems.
+                    </p>
+                </div>
+            </div>
+
+            <!-- RIPEN -->
+            <div class="grid md:grid-cols-12 gap-8 reveal">
+                <div class="md:col-span-5">
+                    <h4 class="text-2xl font-bold">IT Helpdesk Support</h4>
+                    <p class="text-blue-500 font-medium">RIPEN Limited</p>
+                    <p class="text-zinc-500 text-sm mt-1">Feb 2018 - Aug 2021 (3 Years 7 Months)</p>
+                </div>
+                <div class="md:col-span-7">
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Delivered comprehensive technical support for end-users, resolving hardware, software, and basic networking issues. Streamlined internal IT support requests to minimize operational downtime.
+                    </p>
+                </div>
+            </div>
+
+            <!-- DBS -->
+            <div class="grid md:grid-cols-12 gap-8 reveal">
+                <div class="md:col-span-5">
+                    <h4 class="text-2xl font-bold">DBS Project Engineer</h4>
+                    <p class="text-blue-500 font-medium">DBS Bank</p>
+                    <p class="text-zinc-500 text-sm mt-1">May 2019 - Aug 2019 (4 Months)</p>
+                </div>
+                <div class="md:col-span-7">
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Assisted in the implementation and technical testing of various banking system projects. Collaborated with project teams to ensure technical deployments were executed on time.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CITIC -->
+            <div class="grid md:grid-cols-12 gap-8 reveal">
+                <div class="md:col-span-5">
+                    <h4 class="text-2xl font-bold">Project Engineer</h4>
+                    <p class="text-blue-500 font-medium">China CITIC Bank International</p>
+                    <p class="text-zinc-500 text-sm mt-1">May 2017 - Aug 2017 (4 Months)</p>
+                </div>
+                <div class="md:col-span-7">
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Technical project support and systems testing during major infrastructure deployments in a corporate banking environment.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 md:px-24 bg-blue-600 text-white rounded-t-[3rem]">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-5xl md:text-8xl font-bold mb-12 h1-font">Ready for the next big role.</h2>
+            <p class="text-xl opacity-80 mb-12 max-w-xl mx-auto">
+                Currently exploring full-time opportunities with innovative companies and headhunters. Let's talk.
+            </p>
+            <a href="mailto:max@maxviw.com" class="text-2xl md:text-4xl font-light border-b border-white/30 pb-2 hover:border-white transition-all">
+                max@maxviw.com
+            </a>
+            
+            <div class="mt-20 flex justify-center space-x-8 text-sm font-bold tracking-widest uppercase">
+                <a href="https://www.linkedin.com/in/maxchiu-maxviw/" target="_blank" class="hover:opacity-60 transition">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 px-6 text-center text-[10px] text-zinc-600 uppercase tracking-[0.3em]">
+        &copy; 2026 Max Chiu. All Rights Reserved.
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // 1. Unified Smooth Scroll for all .smooth-scroll links
+        document.querySelectorAll('.smooth-scroll').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    gsap.to(window, {
+                        duration: 1.5,
+                        scrollTo: { y: targetElement, autoKill: false },
+                        ease: "power4.inOut"
+                    });
+                }
+            });
+        });
+
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('follower');
+        let mouseX = 0, mouseY = 0;
+        let followerX = 0, followerY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+        });
+
+        function animateCursor() {
+            followerX += (mouseX - followerX) * 0.15;
+            followerY += (mouseY - followerY) * 0.15;
+            follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const revealElements = document.querySelectorAll('.reveal:not(.expertise-card)');
+        revealElements.forEach((el) => {
+            gsap.fromTo(el, 
+                { opacity: 0, y: 30 }, 
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 92%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        });
+
+        gsap.fromTo(".expertise-card", 
+            { opacity: 0, y: 20 },
+            { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.6,
+                stagger: 0.15,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: "#expertise",
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                }
+            }
+        );
+
+        window.addEventListener('mousemove', (e) => {
+            const xPos = (e.clientX / window.innerWidth - 0.5) * 60;
+            const yPos = (e.clientY / window.innerHeight - 0.5) * 60;
+            gsap.to(".parallax-bg", { x: xPos, y: yPos, duration: 2, ease: "power2.out" });
+        });
+
+        const hoverables = document.querySelectorAll('a, button, .glass');
+        hoverables.forEach((el) => {
+            el.addEventListener('mouseenter', () => {
+                follower.style.width = '60px';
+                follower.style.height = '60px';
+                follower.style.backgroundColor = 'rgba(255,255,255,0.1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                follower.style.width = '32px';
+                follower.style.height = '32px';
+                follower.style.backgroundColor = 'transparent';
+            });
+        });
+    </script>
+    <!-- Add ScrollToPlugin for GSAP smooth scrolling -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</body>
+</html>
