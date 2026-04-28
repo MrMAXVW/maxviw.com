@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Max Chiu | Technical Consultant & Designer</title>
+    
+    <!-- Custom SVG Favicon (MC) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23050505'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='Montserrat, sans-serif' font-weight='700' font-size='50' fill='%233b82f6'>MC</text></svg>">
+
     <!-- Tailwind for rapid, clean styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- GSAP for high-end animations -->
@@ -13,12 +17,11 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        /* Added Montserrat for the Logo */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap');
 
         :root {
             --bg-color: #050505;
-            --accent-color: #3b82f6; /* Trusting Blue */
+            --accent-color: #3b82f6; 
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
@@ -34,19 +37,16 @@
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Montserrat Logo Styling */
         .logo-font {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
         }
 
-        /* Smooth reveal animations */
         .reveal {
             opacity: 0;
             will-change: transform, opacity;
         }
 
-        /* Designer glass effect */
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
@@ -57,29 +57,6 @@
             background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
         }
 
-        .nav-link::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 1px;
-            background: var(--accent-color);
-            transition: width .3s;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .parallax-bg {
-            will-change: transform;
-        }
-
-        /* Timeline styles */
-        .timeline-line {
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, var(--accent-color), transparent);
-        }
-
-        /* Toast Notification Styling */
         #toast {
             visibility: hidden;
             min-width: 200px;
@@ -105,17 +82,9 @@
             animation: fadein 0.5s, fadeout 0.5s 2.5s;
         }
 
-        @keyframes fadein {
-            from {bottom: 0; opacity: 0;}
-            to {bottom: 30px; opacity: 1;}
-        }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
-        @keyframes fadeout {
-            from {bottom: 30px; opacity: 1;}
-            to {bottom: 0; opacity: 0;}
-        }
-
-        /* Full Screen Overlay Menu */
         #menu-overlay {
             position: fixed;
             top: 0;
@@ -153,10 +122,7 @@
             transform: translateY(0);
         }
 
-        /* Hamburger Menu Animation */
-        .menu-btn {
-            z-index: 110;
-        }
+        .menu-btn { z-index: 110; }
         .line {
             width: 24px;
             height: 2px;
@@ -171,31 +137,23 @@
 </head>
 <body class="selection:bg-blue-500 selection:text-white">
 
-    <!-- Toast Notification -->
     <div id="toast">Email Copied!</div>
 
-    <!-- Menu Overlay -->
     <div id="menu-overlay">
-        <!-- Overlay Close Button -->
         <button class="menu-close-trigger absolute top-8 right-6 md:right-16 p-2 text-white/50 hover:text-white transition-colors">
             <i data-lucide="x" class="w-8 h-8"></i>
         </button>
-
         <a href="#about" class="menu-item menu-close-trigger smooth-scroll">About</a>
         <a href="#expertise" class="menu-item menu-close-trigger smooth-scroll">Expertise</a>
         <a href="#experience" class="menu-item menu-close-trigger smooth-scroll">Experience</a>
         <a href="#contact" class="menu-item menu-close-trigger smooth-scroll">Contact</a>
-        
         <div class="mt-12 flex space-x-8 opacity-50">
             <a href="https://www.linkedin.com/in/maxchiu-maxviw/" target="_blank" class="text-sm font-bold uppercase tracking-widest hover:text-white transition-colors">LinkedIn</a>
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-8 flex justify-between items-center mix-blend-difference">
         <a href="#" class="logo-font text-2xl font-bold tracking-tighter">MAX CHIU.</a>
-        
-        <!-- Hamburger Menu Button -->
         <button id="menu-toggle" class="menu-btn flex flex-col items-end group p-2">
             <span class="line line-1"></span>
             <span class="line line-2 w-4 group-hover:w-6"></span>
@@ -203,7 +161,7 @@
         </button>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="relative min-h-screen flex flex-col justify-center px-6 md:px-24 hero-gradient overflow-hidden">
         <div class="max-w-5xl z-10 pt-48 md:pt-40">
             <h1 class="text-7xl md:text-9xl font-bold leading-[1.05] md:leading-[0.9] mb-10 reveal hero-title tracking-tight">
@@ -213,7 +171,6 @@
             <p class="text-lg md:text-2xl text-slate-400 max-w-2xl reveal leading-relaxed mb-4">
                 Max Chiu — A Technical Consultant who understands design, and a Designer who actually knows how things work.
             </p>
-            
             <div class="mt-14 reveal">
                 <a href="#contact" class="smooth-scroll inline-flex items-center space-x-6 group bg-blue-600 hover:bg-blue-500 text-white px-10 py-5 rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(59,130,246,0.5)] hover:shadow-[0_0_40px_rgba(59,130,246,0.7)] hover:scale-[1.02] w-full md:w-auto justify-center">
                     <span class="text-sm md:text-sm uppercase tracking-[0.2em] font-bold">Open for Collaboration</span>
@@ -223,18 +180,16 @@
                 </a>
             </div>
         </div>
-        
-        <!-- Parallax Background Element -->
         <div class="absolute bottom-10 right-10 opacity-[0.03] select-none pointer-events-none hidden lg:block parallax-bg" data-speed="0.1">
             <span class="text-[27vw] font-bold leading-[0.8] tracking-tighter text-right block uppercase">MAX<br>CHIU</span>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- 01 About -->
     <section id="about" class="py-24 md:py-32 px-6 md:px-24">
         <div class="grid lg:grid-cols-2 gap-12 md:gap-20">
             <div class="reveal">
-                <span class="text-blue-500 uppercase tracking-[0.3em] text-sm md:text-base font-bold">01. About Me</span>
+                <span class="text-blue-500 uppercase tracking-[0.3em] text-2xl md:text-2xl font-bold">01. About Me</span>
                 <h3 class="text-4xl md:text-5xl font-bold mt-6 mb-8">Professional vibe, <br>sharp execution.</h3>
             </div>
             <div class="reveal">
@@ -248,9 +203,9 @@
         </div>
     </section>
 
-    <!-- Expertise Section -->
+    <!-- 02 Expertise -->
     <section id="expertise" class="py-24 md:py-32 px-6 md:px-24 bg-zinc-950">
-        <span class="text-blue-500 uppercase tracking-[0.3em] text-sm md:text-base font-bold reveal">02. Expertise</span>
+        <span class="text-blue-500 uppercase tracking-[0.3em] text-2xl md:text-2xl font-bold reveal">02. Expertise</span>
         <div class="grid md:grid-cols-3 gap-8 mt-16">
             <div class="glass p-8 md:p-10 rounded-2xl reveal expertise-card">
                 <div class="mb-6 text-blue-500"><i data-lucide="cpu" class="w-8 h-8 md:w-10 md:h-10"></i></div>
@@ -281,81 +236,104 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
+    <!-- 03 Experience -->
     <section id="experience" class="py-24 md:py-32 px-6 md:px-24">
-        <span class="text-blue-500 uppercase tracking-[0.3em] text-sm md:text-base font-bold reveal">03. Professional Experience</span>
+        <span class="text-blue-500 uppercase tracking-[0.3em] text-2xl md:text-2xl font-bold reveal">03. Professional Experience</span>
         
         <div class="mt-20 space-y-24">
-            <!-- ACW Distribution -->
-            <div class="grid md:grid-cols-12 gap-8 reveal">
-                <div class="md:col-span-4">
+            <!-- ACW -->
+            <div class="grid md:grid-cols-12 gap-8 md:gap-16 reveal">
+                <div class="md:col-span-4 md:text-right">
                     <p class="text-blue-500 font-bold text-lg">Aug 2023 - Present</p>
-                    <p class="text-zinc-500 text-sm mt-1">ACW Distribution (HK) Limited</p>
+                    <p class="text-zinc-500 text-sm mt-1">ACW Distribution (HK) Limited<br>(Member of ACW Group)</p>
                 </div>
                 <div class="md:col-span-8">
                     <h4 class="text-3xl font-bold mb-6">Technical Presales Consultant</h4>
-                    <ul class="text-zinc-400 space-y-4 text-lg leading-relaxed list-disc list-outside ml-5">
-                        <li>Architected and delivered end-to-end <strong class="text-white">Intelligent Document Processing (IDP)</strong> solutions tailored for FSI enterprise clients, automating complex data extraction workflows.</li>
-                        <li>Spearheaded digital transformation initiatives, facilitating the strategic transition from legacy imaging systems to modern AI-driven document intelligence platforms.</li>
-                        <li>Provided comprehensive technical guidance during the presales cycle, bridging the gap between business requirements and technical feasibility.</li>
-                    </ul>
+                    <div class="space-y-6 text-zinc-400 text-lg leading-relaxed">
+                        <p><strong class="text-white block mb-1 uppercase tracking-wider text-sm">Solution Architecture & Quoting</strong> 
+                        Architected end-to-end IDP solutions for FSI enterprise clients. Managed the full commercial cycle, translating technical requirements into comprehensive BOMs and quotations.</p>
+                        
+                        <p><strong class="text-white block mb-1 uppercase tracking-wider text-sm">Digital Transformation</strong> 
+                        Lead strategic transition from legacy hardware imaging to AI-driven document intelligence, enhancing extraction accuracy and speed.</p>
+                        
+                        <p><strong class="text-white block mb-1 uppercase tracking-wider text-sm">PoC & Post-sales Support</strong> 
+                        Spearheaded hands-on PoCs to validate workflows and provided post-sales technical guidance to ensure project success.</p>
+                        
+                        <p><strong class="text-white block mb-1 uppercase tracking-wider text-sm">Channel Enablement</strong> 
+                        Acted as a key technical advisor for SI partners, providing training and pre-sales support to drive regional market adoption.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- SMBC & Chopard -->
-            <div class="grid md:grid-cols-12 gap-8 reveal">
-                <div class="md:col-span-4">
-                    <p class="text-blue-500 font-bold text-lg">Feb 2022 - Aug 2023</p>
-                    <p class="text-zinc-500 text-sm mt-1">SMBC / Chopard (via ACW)</p>
+            <!-- SMBC -->
+            <div class="grid md:grid-cols-12 gap-8 md:gap-16 reveal">
+                <div class="md:col-span-4 md:text-right">
+                    <p class="text-blue-500 font-bold text-lg">July 2022 - July 2023</p>
+                    <p class="text-zinc-500 text-sm mt-1">Sumitomo Mitsui Banking Corporation (SMBC)</p>
                 </div>
                 <div class="md:col-span-8">
-                    <h4 class="text-3xl font-bold mb-6">Solution Consultant</h4>
-                    <ul class="text-zinc-400 space-y-4 text-lg leading-relaxed list-disc list-outside ml-5">
-                        <li>Optimized operational efficiency for global financial and luxury brands by designing bespoke automation frameworks.</li>
-                        <li>Managed large-scale system integrations, ensuring seamless data flow and high reliability across multi-vendor environments.</li>
-                    </ul>
+                    <h4 class="text-3xl font-bold mb-6">Information Technology Officer</h4>
+                    <p class="text-zinc-400 text-lg leading-relaxed">Managed day-to-day IT operations and system stability within a strictly regulated banking environment, ensuring all technical workflows met internal security and compliance standards.</p>
+                </div>
+            </div>
+
+            <!-- Chopard -->
+            <div class="grid md:grid-cols-12 gap-8 md:gap-16 reveal">
+                <div class="md:col-span-4 md:text-right">
+                    <p class="text-blue-500 font-bold text-lg">Sep 2021 - July 2022</p>
+                    <p class="text-zinc-500 text-sm mt-1">Chopard</p>
+                </div>
+                <div class="md:col-span-8">
+                    <h4 class="text-3xl font-bold mb-6">IT Operations Administrator</h4>
+                    <p class="text-zinc-400 text-lg leading-relaxed">Administered IT systems and provided regional support for offices and retail boutiques. Managed inventory and ensured high availability of POS and back-office systems.</p>
                 </div>
             </div>
 
             <!-- RIPEN -->
-            <div class="grid md:grid-cols-12 gap-8 reveal">
-                <div class="md:col-span-4">
-                    <p class="text-blue-500 font-bold text-lg">Jan 2021 - Feb 2022</p>
-                    <p class="text-zinc-500 text-sm mt-1">RIPEN</p>
+            <div class="grid md:grid-cols-12 gap-8 md:gap-16 reveal">
+                <div class="md:col-span-4 md:text-right">
+                    <p class="text-blue-500 font-bold text-lg">Feb 2018 - Aug 2021</p>
+                    <p class="text-zinc-500 text-sm mt-1">RIPEN Limited</p>
                 </div>
                 <div class="md:col-span-8">
-                    <h4 class="text-3xl font-bold mb-6">Associate Consultant</h4>
-                    <ul class="text-zinc-400 space-y-4 text-lg leading-relaxed list-disc list-outside ml-5">
-                        <li>Directed creative and technical strategy for branding projects, integrating visual design with robust back-end solutions.</li>
-                        <li>Consulted on UI/UX optimization for digital platforms, significantly improving user engagement metrics.</li>
-                    </ul>
+                    <h4 class="text-3xl font-bold mb-6">IT Helpdesk Support</h4>
+                    <p class="text-zinc-400 text-lg leading-relaxed">Delivered technical support for end-users, resolving hardware, software, and basic networking issues while streamlining requests to minimize downtime.</p>
                 </div>
             </div>
 
-            <!-- DBS & CITIC -->
-            <div class="grid md:grid-cols-12 gap-8 reveal">
-                <div class="md:col-span-4">
-                    <p class="text-blue-500 font-bold text-lg">2018 - 2021</p>
-                    <p class="text-zinc-500 text-sm mt-1">DBS / CITIC Bank International</p>
+            <!-- DBS -->
+            <div class="grid md:grid-cols-12 gap-8 md:gap-16 reveal">
+                <div class="md:col-span-4 md:text-right">
+                    <p class="text-blue-500 font-bold text-lg">May 2019 - Aug 2019</p>
+                    <p class="text-zinc-500 text-sm mt-1">DBS Bank</p>
                 </div>
                 <div class="md:col-span-8">
-                    <h4 class="text-3xl font-bold mb-6">Technical Solution Analyst</h4>
-                    <p class="text-zinc-400 text-lg leading-relaxed">
-                        Focused on banking system maintenance, document management upgrades, and supporting critical digital banking infrastructure during rapid expansion phases.
-                    </p>
+                    <h4 class="text-3xl font-bold mb-6">DBS Project Engineer</h4>
+                    <p class="text-zinc-400 text-lg leading-relaxed">Assisted in implementation and technical testing of banking system projects, collaborating with teams to ensure deployments met predefined timelines.</p>
+                </div>
+            </div>
+
+            <!-- CITIC -->
+            <div class="grid md:grid-cols-12 gap-8 md:gap-16 reveal">
+                <div class="md:col-span-4 md:text-right">
+                    <p class="text-blue-500 font-bold text-lg">May 2017 - Aug 2017</p>
+                    <p class="text-zinc-500 text-sm mt-1">China CITIC Bank International Limited</p>
+                </div>
+                <div class="md:col-span-8">
+                    <h4 class="text-3xl font-bold mb-6">Project Engineer</h4>
+                    <p class="text-zinc-400 text-lg leading-relaxed">Assisted in early-stage project engineering and system documentation support for corporate banking initiatives.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="py-24 md:py-32 px-6 md:px-24 bg-blue-600 text-white rounded-t-[2rem] md:rounded-t-[3rem]">
         <div class="max-w-4xl mx-auto text-center reveal">
-            <h2 class="text-5xl md:text-8xl font-bold mb-8 md:mb-12 h1-font">Ready for the next big role.</h2>
+            <h2 class="text-5xl md:text-8xl font-bold mb-8 md:mb-12">Ready for the next big role.</h2>
             <p class="text-xl md:text-xl opacity-80 mb-12 max-w-xl mx-auto leading-relaxed">
                 Currently exploring full-time opportunities with innovative companies and headhunters. Let's talk.
             </p>
-            
             <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-4">
                 <a href="mailto:max@maxviw.com" class="text-2xl md:text-4xl font-light border-b border-white/30 pb-2 hover:border-white transition-all break-all">
                     max@maxviw.com
@@ -374,7 +352,6 @@
     <script>
         lucide.createIcons();
 
-        // Menu Toggle Logic
         const menuBtn = document.getElementById('menu-toggle');
         const menuOverlay = document.getElementById('menu-overlay');
         const menuCloseTriggers = document.querySelectorAll('.menu-close-trigger');
@@ -383,11 +360,7 @@
             menuBtn.classList.add('active');
             menuOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-            
-            gsap.fromTo(".menu-item", 
-                { opacity: 0, y: 30 }, 
-                { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, delay: 0.3, ease: "power3.out" }
-            );
+            gsap.fromTo(".menu-item", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, delay: 0.3, ease: "power3.out" });
         };
 
         const closeMenu = () => {
@@ -397,18 +370,11 @@
         };
 
         menuBtn.addEventListener('click', () => {
-            if (menuOverlay.classList.contains('active')) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
+            menuOverlay.classList.contains('active') ? closeMenu() : openMenu();
         });
 
-        menuCloseTriggers.forEach(trigger => {
-            trigger.addEventListener('click', closeMenu);
-        });
+        menuCloseTriggers.forEach(trigger => trigger.addEventListener('click', closeMenu));
 
-        // Copy Email Logic
         document.getElementById('copyEmail').addEventListener('click', function() {
             const email = "max@maxviw.com";
             const el = document.createElement('textarea');
@@ -419,64 +385,29 @@
             el.select();
             document.execCommand('copy');
             document.body.removeChild(el);
-
             const toast = document.getElementById("toast");
             toast.className = "show";
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
         });
 
-        // Unified Smooth Scroll
         document.querySelectorAll('.smooth-scroll').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
                 if (targetElement) {
-                    gsap.to(window, {
-                        duration: 1.5,
-                        scrollTo: { y: targetElement, autoKill: false },
-                        ease: "power4.inOut"
-                    });
+                    gsap.to(window, { duration: 1.5, scrollTo: { y: targetElement, autoKill: false }, ease: "power4.inOut" });
                 }
             });
         });
 
         gsap.registerPlugin(ScrollTrigger);
 
-        const revealElements = document.querySelectorAll('.reveal:not(.expertise-card)');
-        revealElements.forEach((el) => {
-            gsap.fromTo(el, 
-                { opacity: 0, y: 30 }, 
-                { 
-                    opacity: 1, 
-                    y: 0, 
-                    duration: 0.8, 
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 92%",
-                        toggleActions: "play none none none"
-                    }
-                }
-            );
+        document.querySelectorAll('.reveal:not(.expertise-card)').forEach((el) => {
+            gsap.fromTo(el, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 92%", toggleActions: "play none none none" } });
         });
 
-        gsap.fromTo(".expertise-card", 
-            { opacity: 0, y: 20 },
-            { 
-                opacity: 1, 
-                y: 0, 
-                duration: 0.6,
-                stagger: 0.15,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: "#expertise",
-                    start: "top 80%",
-                    toggleActions: "play none none none"
-                }
-            }
-        );
+        gsap.fromTo(".expertise-card", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power2.out", scrollTrigger: { trigger: "#expertise", start: "top 80%", toggleActions: "play none none none" } });
 
         if (window.innerWidth > 768) {
             window.addEventListener('mousemove', (e) => {
